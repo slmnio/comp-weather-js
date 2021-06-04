@@ -29,3 +29,13 @@ body {
     text-align: right;
     min-width: 120px;
 }
+
+.dark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
