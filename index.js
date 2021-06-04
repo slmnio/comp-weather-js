@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(cors());
 
+const spacetime = require("spacetime");
+
 let lastWeatherData = null;
 
 app.get('/', (req, res) => {
@@ -21,15 +23,16 @@ app.post('/data', (req, res) => {
     console.log(req.body);
 
     let data = {
-        time: req.body.time,
         light: req.body.light,
         temperature: req.body.temperature,
         pressure: req.body.pressure,
     }
 
 
-    if (["time", "light", "temperature", "pressure"].every(key => data[key] !== undefined && data[key] !== null)) {
-        lastWeatherData = req.body;
+    if (["light", "temperature", "pressure"].every(key => data[key] !== undefined && data[key] !== null)) {
+        let now = spacetime.now("Europe/London");
+        data.time = now.format("{iso-short} {hour}:{minute-pad}:{second-pad}{ampm}");
+        lastWeatherData = data;
     }
 
     res.send(":) thanks nucleo board");

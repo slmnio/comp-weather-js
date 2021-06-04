@@ -969,6 +969,11 @@ signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
+spacetime@^6.16.1:
+  version "6.16.1"
+  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-6.16.1.tgz#e032dc77bea494367a7a321a03458ebbf8f625b0"
+  integrity sha512-+aK5oTrCCfXZsg73NEoy3V2cLa0xY3obddFNbWSJ8UcbuPb7f8zWOV4vH3hEAncznUJQqA7tGHAuVR4TysfgIA==
+
 "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
