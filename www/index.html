@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <title>SLMN Weather</title>
     <link rel="stylesheet" href="app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
+<div id="app">{{ weather }}</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            weather: null
+        }
+    });
+    update();
+    setInterval(update, 5000);
 
+    async function update() {
+        let data = await fetch("https://data.weather.slmn.io/weather").then(res => res.json());
+        app.weather = data;
+    }
+</script>
 </body>
 </html>
