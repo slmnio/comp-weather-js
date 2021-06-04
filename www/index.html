@@ -44,12 +44,12 @@
                     };
                 })
                 return data;
+            },
+            dark() {
+                if (!this.weatherArray) return 1;
+                if (!this.weatherArray["light"]) return 1;
+                return parseFloat(this.weatherArray["light"].val) / 2;
             }
-        },
-        dark() {
-            if (!this.weatherArray) return 1;
-            if (!this.weatherArray["light"]) return 1;
-            return parseFloat(this.weatherArray["light"].val) / 2;
         }
     });
     update();
