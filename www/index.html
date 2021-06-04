@@ -54,7 +54,7 @@
         }
     });
     update();
-    setInterval(update, 5000);
+    setInterval(update, 2000);
 
     async function update() {
         app.weather = await fetch("https://data.weather.slmn.io/weather").then(res => res.json());
