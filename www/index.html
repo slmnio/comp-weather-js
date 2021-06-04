@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="app">
-    <div class="dark" :style="{ opacity: weather.val / 2 }"></div>
+    <div class="dark" :style="{ opacity: dark }"></div>
     <div class="center">
         <div class="error" v-if="weather && weather.error">
             {{ weather.error }}
@@ -45,14 +45,18 @@
                 })
                 return data;
             }
+        },
+        dark() {
+            if (!this.weatherArray) return 1;
+            if (!this.weatherArray["light"]) return 1;
+            return parseFloat(this.weatherArray["light"].val) / 2;
         }
     });
     update();
     setInterval(update, 5000);
 
     async function update() {
-        let data = await fetch("https://data.weather.slmn.io/weather").then(res => res.json());
-        app.weather = data;
+        app.weather = await fetch("https://data.weather.slmn.io/weather").then(res => res.json());
     }
 </script>
 </body>
