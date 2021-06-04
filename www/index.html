@@ -31,7 +31,15 @@
         computed: {
             weatherArray() {
                 if (!this.weather) return null;
-                return Object.entries(this.weather);
+                let data = Object.entries(this.weather);
+                data = data.map(([key, val]) => {
+                    if (key === "temperature") val += "°C";
+                    if (key === "pressure") val += "mbar";
+                    if (key === "light") val = ((1-val) * 100).toFixed(1) + "%";
+
+                    return [key, val];
+                })
+                return data;
             }
         }
     });
