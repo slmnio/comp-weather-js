@@ -35,9 +35,9 @@
                 let data = Object.entries(this.weather);
                 data = data.map(([key, val]) => {
                     let format = val;
-                    if (key === "temperature") format = val += "°C";
-                    if (key === "pressure") format = val += "mbar";
-                    if (key === "light") format = val = ((1-val) * 100).toFixed(1) + "%";
+                    if (key === "temperature") format = val + "°C";
+                    if (key === "pressure") format = val + " mbar";
+                    if (key === "light") format = ((1-val) * 100).toFixed(1) + "%";
 
                     return {
                         key, val, format
