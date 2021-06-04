@@ -49,7 +49,7 @@
                 if (!this.weatherArray) return 0;
                 let item = this.weatherArray.find(i => i.key === "light");
                 if (!item) return 0;
-                return item.val / 2;
+                return item.val - 0.5;
             }
         }
     });
