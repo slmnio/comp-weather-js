@@ -8,15 +8,16 @@
 </head>
 <body>
 <div id="app">
+    <div class="dark" :style="{ opacity: weather.val / 2 }"></div>
     <div class="center">
         <div class="error" v-if="weather && weather.error">
             {{ weather.error }}
         </div>
         <div class="weather" v-else>
             <table>
-                <tr v-for="([key, val]) in weatherArray">
-                    <td>{{ key }}</td>
-                    <td>{{ val }}</td>
+                <tr v-for="(item) in weatherArray">
+                    <td>{{ item.key }}</td>
+                    <td>{{ item.format }}</td>
                 </tr>
             </table>
         </div>
@@ -33,11 +34,14 @@
                 if (!this.weather) return null;
                 let data = Object.entries(this.weather);
                 data = data.map(([key, val]) => {
-                    if (key === "temperature") val += "°C";
-                    if (key === "pressure") val += "mbar";
-                    if (key === "light") val = ((1-val) * 100).toFixed(1) + "%";
+                    let format = val;
+                    if (key === "temperature") format = val += "°C";
+                    if (key === "pressure") format = val += "mbar";
+                    if (key === "light") format = val = ((1-val) * 100).toFixed(1) + "%";
 
-                    return [key, val];
+                    return {
+                        key, val, format
+                    };
                 })
                 return data;
             }
